@@ -8,7 +8,7 @@ import json
 import yaml
 
 with open("config.yaml") as file:
-    config = yaml.load(file)
+    config = yaml.load(file, Loader=yaml.FullLoader)
 
 asns = config["asns"]
 irr = config["irr"]
@@ -62,10 +62,10 @@ class IrrQuery:
             origin, route, origin6, route6 = a.group(
                 "origin", "route", "origin6", "route6"
             )
-            if origin or route != None:
+            if origin or route is not None:
                 summ_j[route] = []
                 summ_j[route].append(origin)
-            elif origin6 or route6 != None:
+            elif origin6 or route6 is not None:
                 summ_j[route6] = []
                 summ_j[route6].append(origin6)
         return summ_j
