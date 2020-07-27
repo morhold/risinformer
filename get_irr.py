@@ -13,6 +13,7 @@ with open("config.yaml") as file:
 asns = config["asns"]
 irr = config["irr"]
 
+print(config)
 
 class IrrQuery:
     def __init__(self, irr):
@@ -71,9 +72,12 @@ class IrrQuery:
         return summ_j
 
 
+
 radb_query = "!!\r\n -K -i origin AS{} \r\n"
+#radb_query = "\r\n -K -i origin AS{} \r\n"
 ripe_query = "-i origin -k AS{} -K\n"
 radb_moas = "!!\r\n -K {} \r\n"
+#radb_moas = "\r\n -K {} \r\n"
 ripe_moas = "-k -K {} \n"
 
 w = IrrQuery(irr)
